@@ -1,5 +1,5 @@
 {
-  // "output": "HDMI-A-1",
+  "output": "HDMI-A-1",
   "reload_style_on_change": true,
   "layer": "top",
   "position": "top",
@@ -61,7 +61,7 @@
   "cpu": {
     "interval": 5,
     "format": "󰍛",
-    "on-click": "hyprctl dispatch exec '[float;center] alacritty -e btop'"
+    "on-click": "hyprctl dispatch exec \"[float;size 900 600;center] kitty -e btop\""
   },
   "clock": {
     "format": "{:L%A %H:%M}",
@@ -86,7 +86,8 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "hyprctl dispatch exec '[float;center] alacritty -e impala'"
+    "on-click": "hyprctl dispatch exec \"[float;size 900 600;center] kitty -e impala\""
+
   },
   "battery": {
     "format": "{capacity}% {icon}",
@@ -113,11 +114,11 @@
     "format-connected": "󰂱",
     "format-no-controller": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "hyprctl dispatch exec '[float;center] alacritty -e bluetui'"
+    "on-click": "hyprctl dispatch exec \"[float;size 900 600;center] kitty -e bluetui\""
   },
   "pulseaudio": {
     "format": "{icon}",
-    "on-click": "hyprctl dispatch exec '[float;center] alacritty -e wiremix'",
+    "on-click": "hyprctl dispatch exec \"[float;size 900 600;center] kitty -e wiremix\"",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,

@@ -1,108 +1,34 @@
 #!/bin/bash
 
-### ─────────────────────────────
-###  Base menu system – Style Omarchy
-### ─────────────────────────────
-
 menu() {
   local prompt="$1"
   local options="$2"
 
   printf "%b" "$options" \
-    | walker --dmenu --width 280 -p "$prompt…" \
+    | walker --dmenu --nosearch --width 280 -p "$prompt…" \
     2>/dev/null
 }
 
-### ─────────────────────────────
-###  Sub-menus
-### ─────────────────────────────
-
-show_apps_menu() {
-  walker -p "Applications…"
-}
-
-show_install_menu() {
-  case "$(menu 'Install' \
-" Install package
-󱣱 Install AUR package
-")" in
-    *"Install package"*)
-        hyprctl dispatch exec "[float;center] alacritty -e ~/.local/bin/install-arch"
-        ;;
-    *"Install AUR package"*)
-        hyprctl dispatch exec "[float;center] alacritty -e ~/.local/bin/install-aur"
-        ;;
-    *)
-        show_main_menu
-        ;;
-  esac
-}
-
-show_remove_menu() {
-  case "$(menu 'Remove' \
-" Remove package
-")" in
-    *"Remove package"*)
-        hyprctl dispatch exec "[float;center] alacritty -e ~/.local/bin/remove-pkg"
-        ;;
-    *)
-        show_main_menu
-        ;;
-  esac
-}
-
-show_update_menu() {
-  case "$(menu 'Update' \
-" Update system
-")" in
-    *Update*)
-        hyprctl dispatch exec "[float;center] alacritty -e sudo pacman -Syu"
-        ;;
-    *)
-        show_main_menu
-        ;;
-  esac
-}
-
-show_system_menu() {
-  case "$(menu 'System' \
-"󰜉 Restart
-󰐥 Shutdown
-󰤄 Suspend
- Lock
-")" in
-    *Restart*) systemctl reboot ;;
-    *Shutdown*) systemctl poweroff ;;
-    *Suspend*) systemctl suspend ;;
-    *Lock*) hyprlock ;;
-    *)
-        show_main_menu
-        ;;
-  esac
-}
-
-### ─────────────────────────────
-### Menu principal
-### ─────────────────────────────
-
 show_main_menu() {
   case "$(menu 'Menu' \
-"󰀻 Applications
- Install
- Remove
- Update
- System
+" Update system
+󰜉 Restart
+󰐥 Poweroff
+󰤄 Suspend
 ")" in
-    *Applications*) show_apps_menu ;;
-    *Install*) show_install_menu ;;
-    *Remove*) show_remove_menu ;;
-    *Update*) show_update_menu ;;
-    *System*) show_system_menu ;;
+    *"Update system"*)
+      kitty --class kitty-float --hold -e bash -c 'sudo pacman -Syu && yay -Syu && flatpak update'
+      ;;
+    *Restart*)
+      systemctl reboot
+      ;;
+    *Poweroff*)
+      systemctl poweroff
+      ;;
+    *Suspend*)
+      systemctl suspend
+      ;;
   esac
 }
-
-### ─────────────────────────────
-### Lancement
-### ─────────────────────────────
 
 show_main_menu

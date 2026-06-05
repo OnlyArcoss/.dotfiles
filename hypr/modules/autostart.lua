@@ -1,0 +1,10 @@
+-- autostart.lua
+
+hl.on("hyprland.start", function()
+    hl.exec_cmd("waybar & hyprpaper")
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.exec_cmd("elephant service enable")
+    hl.exec_cmd("systemctl --user start elephant.service")
+    hl.exec_cmd("walker --gapplication-service")
+    hl.exec_cmd("swayosd-server")
+end)

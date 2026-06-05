@@ -1,7 +1,7 @@
 @define-color selected-text #8caaee;
 @define-color text #c6d0f5;
 @define-color base #24273a;
-@define-color border #c6d0f5;
+@define-color border #cba6f7d9;
 @define-color foreground #c6d0f5;
 @define-color background #24273a;
 
@@ -31,6 +31,7 @@ scrollbar {
   background: alpha(@base, 0.95);
   padding: 20px;
   border: 2px solid @border;
+  border-radius: 12px;
 }
 
 .preview-box {
@@ -42,6 +43,7 @@ scrollbar {
 .search-container {
   background: @base;
   padding: 10px;
+  border-radius: 8px;
 }
 
 .input placeholder {
