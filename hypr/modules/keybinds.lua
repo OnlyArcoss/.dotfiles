@@ -2,9 +2,6 @@
 
 local mainMod = "SUPER"
 
--- ⚠️  Ces variables doivent être définies dans variables.lua et accessibles globalement
--- terminal, fileManager, menu
-
 -- Actions principales
 hl.bind(mainMod .. " + A",      hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + C",      hl.dsp.window.close())

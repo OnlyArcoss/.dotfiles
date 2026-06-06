@@ -2,4 +2,4 @@
 
 terminal    = "kitty"
 fileManager = "dolphin"
-menu        = "walker"
+menu = "nc -U /run/user/1000/walker/walker.sock"
