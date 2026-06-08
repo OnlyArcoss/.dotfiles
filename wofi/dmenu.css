@@ -22,15 +22,13 @@ window {
 
 #inner-box {
     margin: 4px;
-    border: 6px solid #1e1e2e;
-    background-color: #1e1e2e;
     border-radius: 12px;
 }
 
 #outer-box {
-    border: 2px solid #cba6f7;
+    border: 2px solid rgba(203, 166, 247, 0.8);
     border-radius: 12px;
-    background-color: #1e1e2e;
+    background-color: rgba(30, 30, 46, 0.9);
 }
 
 #scroll {
